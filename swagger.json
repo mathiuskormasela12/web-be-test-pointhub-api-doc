@@ -1,0 +1,1144 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"IRegisterUserResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"refreshToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"accessToken",
+					"refreshToken"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_string.string-Array_": {
+				"properties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"IResponse_IRegisterUserResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/IRegisterUserResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/IRegisterUserResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IRegisterUserSchemaBody": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"phoneNumber",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ILoginUserSchemaBody": {
+				"properties": {
+					"phoneNumber": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"phoneNumber",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICreateAccessTokenBody": {
+				"properties": {
+					"refreshToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"refreshToken"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISendChatResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IResponse_ISendChatResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/ISendChatResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/ISendChatResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"mongoose.Types.ObjectId": {
+				"type": "string"
+			},
+			"IChatSchemaBody": {
+				"properties": {
+					"receiverId": {
+						"$ref": "#/components/schemas/mongoose.Types.ObjectId"
+					},
+					"chat": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"receiverId",
+					"chat"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IGetChatListResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"chat": {
+						"type": "string"
+					},
+					"senderAccount": {
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"_id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"_id"
+						],
+						"type": "object"
+					},
+					"receiverAccount": {
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"_id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"_id"
+						],
+						"type": "object"
+					},
+					"createdAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"chat",
+					"senderAccount",
+					"receiverAccount",
+					"createdAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IResponse_IGetChatListResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/IGetChatListResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/IGetChatListResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICreateCustomerResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"phone"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IResponse_ICreateCustomerResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/ICreateCustomerResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/ICreateCustomerResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICreateCustomerSchemaBody": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"phone"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICreateInvoiceSchemaResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"customerId": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"_id",
+					"total",
+					"customerId",
+					"date"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IResponse_ICreateInvoiceSchemaResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/ICreateInvoiceSchemaResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/ICreateInvoiceSchemaResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICreateInvoiceSchemaBody": {
+				"properties": {
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"phone": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"total",
+					"phone"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IGetInvoiceSchemaResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"customer": {
+						"properties": {
+							"phone": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"phone",
+							"name"
+						],
+						"type": "object"
+					},
+					"date": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"total",
+					"customer",
+					"date"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IResponse_IGetInvoiceSchemaResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/IGetInvoiceSchemaResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/IGetInvoiceSchemaResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "web-be-test-pointhub",
+		"version": "1.0.0",
+		"description": "RESTful API Chat App",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Mathius"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/api/v1/users/register": {
+			"post": {
+				"operationId": "RegisterUser",
+				"responses": {
+					"201": {
+						"description": "Register Successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IRegisterUserResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 201,
+											"message": "Register Successfully",
+											"result": {
+												"_id": "646361e3bb947545267562fa",
+												"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+												"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5a"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed to register",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IRegisterUserResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to register",
+											"errors": {
+												"phoneNumber": [
+													"phone number already exists"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Register a new User\nThis is an API to create a new user",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IRegisterUserSchemaBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/users/login": {
+			"post": {
+				"operationId": "LoginUser",
+				"responses": {
+					"201": {
+						"description": "Login Successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IRegisterUserResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "Login Successfully",
+											"result": {
+												"_id": "646361e3bb947545267562fa",
+												"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+												"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5a"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed to login",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IRegisterUserResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 401,
+											"message": "Failed to login",
+											"errors": {
+												"phoneNumber": [
+													"The phone number does not exists"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Login\nThis is an API to log in to an account",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ILoginUserSchemaBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/users/access-token": {
+			"post": {
+				"operationId": "CreateAccessToken",
+				"responses": {
+					"200": {
+						"description": "Success to Generate Access Token",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IRegisterUserResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 201,
+											"message": "The access token has been created",
+											"result": {
+												"_id": "646361e3bb947545267562fa",
+												"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+												"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5a"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed to Generate Access Token",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IRegisterUserResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to generate token",
+											"errors": {
+												"token": [
+													"Secret key is required"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Access Token\nThis is an API to create a new access token & refresh token",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ICreateAccessTokenBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/chats": {
+			"post": {
+				"operationId": "SendChat",
+				"responses": {
+					"200": {
+						"description": "Success Send Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ISendChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "Message is sent successfully",
+											"result": {
+												"message": "Hello"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Send Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ISendChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to sent message"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Send a Chat\nThis is an API to send a new message",
+				"tags": [
+					"Chats"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IChatSchemaBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/chats/{receiverId}": {
+			"get": {
+				"operationId": "GetChatLists",
+				"responses": {
+					"200": {
+						"description": "Success Get Chat Lists",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IGetChatListResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "Success get chat lists",
+											"results": [
+												{
+													"_id": "6463622dbb94754526756300",
+													"senderAccount": {
+														"_id": "6463622dbb94754526756301",
+														"name": "Jhon"
+													},
+													"receiverAccount": {
+														"_id": "6463622dbb94754526756401",
+														"name": "Alvin"
+													},
+													"chat": "Hi",
+													"createdAt": "2023-02-21"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Get Chat Lists",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IGetChatListResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to get chat lists"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get a Chat Lists\nThis is an API to get chat lists",
+				"tags": [
+					"Chats"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "receiverId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/customers": {
+			"post": {
+				"operationId": "CreateCustomer",
+				"responses": {
+					"200": {
+						"description": "Success Create Customer Data",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateCustomerResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The customer data is created successfully",
+											"result": {
+												"_id": "6462ff5539cbacccda18a335",
+												"name": "Jhon Doe",
+												"phone": "628392991"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Create Customer",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateCustomerResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to create customer data",
+											"errors": {
+												"phone": [
+													"phone already exists"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Failed Create Customer (Server Error)",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateCustomerResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 500,
+											"message": "Failed to create customer data",
+											"errors": {
+												"serverError": [
+													"Server Error"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Customer\nThis API can be used to create a customer data",
+				"tags": [
+					"Customers"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ICreateCustomerSchemaBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/customers/invoice": {
+			"post": {
+				"operationId": "CreateInvoice",
+				"responses": {
+					"200": {
+						"description": "Success Create Invoice Data",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateInvoiceSchemaResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The invoice data is created successfully",
+											"result": {
+												"_id": "64639830d666e7192a3a60f8",
+												"customerId": "64639297810ef4266e75da44",
+												"total": 10,
+												"date": "2023-05-16T17:40:46.041Z"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Create Invoice",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateInvoiceSchemaResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to create invoice data",
+											"errors": {
+												"phone": [
+													"phone does not exists"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Failed Create Invoice (Server Error)",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateInvoiceSchemaResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 500,
+											"message": "Failed to create customer data",
+											"errors": {
+												"serverError": [
+													"Server Error"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Invoice\nThis API can be used to create a invoice data",
+				"tags": [
+					"Customers"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ICreateInvoiceSchemaBody"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetInvoice",
+				"responses": {
+					"200": {
+						"description": "Success Get Invoice Data",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IGetInvoiceSchemaResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "Success get invoices",
+											"results": [
+												{
+													"_id": "646396f5f44778fd2fa6362b",
+													"total": 10,
+													"customer": {
+														"name": "Matthew",
+														"phone": "6283838383"
+													},
+													"date": "2023-05-16 21-45-09"
+												},
+												{
+													"_id": "64639830d666e7192a3a60f8",
+													"total": 10,
+													"customer": {
+														"name": "Matthew",
+														"phone": "6283838383"
+													},
+													"date": "2023-05-16 21-50-24"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Failed Create Invoice (Server Error)",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_IGetInvoiceSchemaResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 500,
+											"message": "Failed get invoices",
+											"errors": {
+												"serverError": [
+													"Server Error"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Invoice\nThis API can be used to get invoice data",
+				"tags": [
+					"Customers"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
