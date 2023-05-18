@@ -445,6 +445,78 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ICreateOrSendGroupChatResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IResponse_ICreateOrSendGroupChatResponse_": {
+				"properties": {
+					"code": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"result": {
+						"$ref": "#/components/schemas/ICreateOrSendGroupChatResponse"
+					},
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/ICreateOrSendGroupChatResponse"
+						},
+						"type": "array"
+					},
+					"errors": {
+						"$ref": "#/components/schemas/Record_string.string-Array_"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICreateGroupChatBody": {
+				"properties": {
+					"groupName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"groupName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISendGroupChatBody": {
+				"properties": {
+					"chat": {
+						"type": "string"
+					},
+					"senderId": {
+						"$ref": "#/components/schemas/mongoose.Types.ObjectId"
+					},
+					"groupId": {
+						"$ref": "#/components/schemas/mongoose.Types.ObjectId"
+					}
+				},
+				"required": [
+					"chat",
+					"senderId",
+					"groupId"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {}
@@ -513,7 +585,7 @@
 						}
 					}
 				},
-				"description": "Register a new User\nThis is an API to create a new user",
+				"description": "This is an API to create a new user",
 				"tags": [
 					"Users"
 				],
@@ -582,7 +654,7 @@
 						}
 					}
 				},
-				"description": "Login\nThis is an API to log in to an account",
+				"description": "This is an API to log in to an account",
 				"tags": [
 					"Users"
 				],
@@ -651,7 +723,7 @@
 						}
 					}
 				},
-				"description": "Create Access Token\nThis is an API to create a new access token & refresh token",
+				"description": "This is an API to create a new access token & refresh token",
 				"tags": [
 					"Users"
 				],
@@ -713,7 +785,7 @@
 						}
 					}
 				},
-				"description": "Send a Chat\nThis is an API to send a new message",
+				"description": "This is an API to send a new message",
 				"tags": [
 					"Chats"
 				],
@@ -802,7 +874,7 @@
 						}
 					}
 				},
-				"description": "Get a Chat Lists\nThis is an API to get chat lists",
+				"description": "This is an API to get chat lists",
 				"tags": [
 					"Chats"
 				],
@@ -907,7 +979,7 @@
 						}
 					}
 				},
-				"description": "Create Customer\nThis API can be used to create a customer data",
+				"description": "This API can be used to create a customer data",
 				"tags": [
 					"Customers"
 				],
@@ -960,7 +1032,7 @@
 												"_id": "64639830d666e7192a3a60f8",
 												"customerId": "64639297810ef4266e75da44",
 												"total": 10,
-												"date": "2023-05-16T17:40:46.041Z"
+												"date": "2023-05-18T16:33:50.283Z"
 											}
 										}
 									}
@@ -1015,7 +1087,7 @@
 						}
 					}
 				},
-				"description": "Create Invoice\nThis API can be used to create a invoice data",
+				"description": "This API can be used to create a invoice data",
 				"tags": [
 					"Customers"
 				],
@@ -1112,7 +1184,7 @@
 						}
 					}
 				},
-				"description": "Get Invoice\nThis API can be used to get invoice data",
+				"description": "This API can be used to get invoice data",
 				"tags": [
 					"Customers"
 				],
@@ -1133,6 +1205,381 @@
 						}
 					}
 				]
+			}
+		},
+		"/api/v1/group": {
+			"post": {
+				"operationId": "CreateGroup",
+				"responses": {
+					"200": {
+						"description": "Success Create Group Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The group has been created successfully"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Create Group Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed Create Group Chat"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "This is an API to create a new group chat",
+				"tags": [
+					"Group"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ICreateGroupChatBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/group/chat": {
+			"post": {
+				"operationId": "SendGroupChat",
+				"responses": {
+					"200": {
+						"description": "Success Send Group Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The chat has been sent"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Send Group Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "Failed to send a message to the group chat"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "This is an API to send a chat to the group chat",
+				"tags": [
+					"Group"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ISendGroupChatBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/group/chat/{chatId}": {
+			"delete": {
+				"operationId": "DeleteChatForMe",
+				"responses": {
+					"200": {
+						"description": "Success Delete Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The chat has been deleted"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Delete Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "The chat cannot be deleted"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "This is an API to remove a chat for me",
+				"tags": [
+					"Group"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "chatId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/group/chat-all/{chatId}": {
+			"delete": {
+				"operationId": "DeleteChatForAll",
+				"responses": {
+					"200": {
+						"description": "Success Delete Chat",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The chat has been deleted for all group member"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Delete Chat For All",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "The chat cannot be deleted for all group member"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "This is an API to remove a chat for all group chat members",
+				"tags": [
+					"Group"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "chatId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/v1/group/chat-image": {
+			"post": {
+				"operationId": "SendImage",
+				"responses": {
+					"200": {
+						"description": "Success Send Image",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 200,
+											"message": "The image has been sent to the group"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Failed Send Image",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse_ICreateOrSendGroupChatResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"code": 400,
+											"message": "The image cannot be sent to the group"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "This is an API to send an image to the a group chat",
+				"tags": [
+					"Group"
+				],
+				"security": [
+					{
+						"jwt": [
+							"x-access-token"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "x-access-token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"image": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"image"
+								]
+							}
+						}
+					}
+				}
 			}
 		}
 	},
